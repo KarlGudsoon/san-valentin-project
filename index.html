@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/public/css/output.css" rel="stylesheet">
     <title>San Valentín</title>
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 </head>
 <body>
-    <main id="main" class="flex flex-col h-dvh bg-red-300 justify-center items-center overflow-hidden">
+    <div class="corazones"></div>
+    <main id="main" class="flex flex-col h-dvh justify-center font-[Lexend] items-center overflow-hidden">
         <div class="flex flex-col justify-center items-center">
-            <span class="text-red-800 font-bold">Hola amor,</span>
-            <h1 class="text-3xl mt-2 font-bold text-red-50">¿Quieres ser mi Valentín?</h1>
+            <span class="text-yellow-500 font-bold">Hola mi vida,</span>
+            <h1 class="text-3xl mt-2 font-bold text-red-50">💝Este 14 de febrero, ¿Quieres ser mi Valentín? 💝</h1>
+            <span class="text-xs text-red-50/50">(Dale a que no unas cuantas veces para darle un poco de emoción 😝)</span>
             <img class="size-64 drop-shadow-amber-100" src="/public/assets/img/valentin.png" alt="">
         </div>
         <div>
@@ -23,21 +42,64 @@
 </html>
 
 <script>
-    const no = document.getElementById("btn-no");
-    const si = document.getElementById("btn-si");
+const no = document.getElementById("btn-no");
+const si = document.getElementById("btn-si");
 
-    no.addEventListener("click", () => {
-        si.style.width = (parseInt(si.style.width) || 250) * 2 + "px";
-        si.style.height = (parseInt(si.style.height) || 250) * 2 + "px";
-    });
+no.addEventListener("click", () => {
+    si.style.width = (parseInt(si.style.width) || 128) * 2 + "px";
+    si.style.height = (parseInt(si.style.height) || 128) * 2 + "px";
 
-    si.addEventListener("click", () => {
-        document.getElementById("main").innerHTML = `
-            <div class="flex flex-col justify-center items-center">
-                <span class="text-red-800 font-bold">¡Gracias por ser mi Valentín!</span>
-                <h1 class="text-3xl mt-2 font-bold text-red-50">Te amo mucho ❤️</h1>
-                <img class="w-3xs drop-shadow-amber-100" src="/public/assets/img/dijoquesi.png" alt="">
-            </div>
-        `;
-    });
+    if (si.innerHTML === "Sí") {
+        si.innerHTML = "¿Estas segura?";
+    } else if (si.innerHTML === "¿Estas segura?") {
+        si.innerHTML = "¡Cómo no!";
+    } else if (si.innerHTML === "¡Cómo no!") {
+        si.innerHTML = "¡Por supuesto que sí!";
+    }
+    
+
+});
+
+si.addEventListener("click", () => {
+    document.getElementById("main").innerHTML = `
+        <div class="flex flex-col justify-center items-center">
+            <span class="text-yellow-500 font-bold">Lo sabía 😎 ¡Gracias por ser mi Valentín!</span>
+            <h1 class="text-3xl mt-2 font-bold text-red-50">Te amo mucho ❤️</h1>
+            <img class="w-3xs drop-shadow-amber-100" src="/public/assets/img/dijoquesi.png" alt="">
+            <p class="text-3xl mt-2 font-bold text-red-50">Nos vemos este 14 de febrero con un sushito a distancia 😝</p>
+        </div>
+    `;
+    for (let i = 0; i < 25; i++) {
+        caerHojas();
+    }
+});
+
+function caerHojas() {
+    let contenedorHojas = document.querySelector('.corazones');
+    const hoja = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    hoja.setAttribute("class", "corazon");
+    hoja.setAttribute("viewBox", "0 0 32 32");
+
+    hoja.style.left = Math.random() * contenedorHojas.offsetWidth + "px";
+    hoja.style.animationDuration = (10 + Math.random() * 10) + "s";
+    hoja.style.animationDelay = Math.random() * 10 + "s";
+    hoja.style.translate = `translateZ(${Math.random() * 100}px)`;
+
+    hoja.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+            <g fill="none">
+                <path fill="#f8312f" d="M6 6c4.665-2.332 8.5.5 10 2.5c1.5-2 5.335-4.832 10-2.5c6 3 4.5 10.5 0 15c-2.196 2.196-6.063 6.063-8.891 8.214a1.764 1.764 0 0 1-2.186-.041C12.33 27.08 8.165 23.165 6 21C1.5 16.5 0 9 6 6" />
+                <path fill="#ca0b4a" d="M16 8.5v3.05c1.27-2.685 4.425-6.27 9.658-5.713c-4.51-2.03-8.195.712-9.658 2.663m-4.054-2.963C10.26 4.95 8.225 4.887 6 6C0 9 1.5 16.5 6 21c2.165 2.165 6.33 6.08 8.923 8.173a1.764 1.764 0 0 0 2.186.04q.381-.29.785-.618c-2.854-2.143-6.86-5.519-9.035-7.462c-4.957-4.431-6.61-11.815 0-14.769a9.7 9.7 0 0 1 3.087-.827" />
+                <ellipse cx="23.477" cy="12.594" fill="#f37366" rx="2.836" ry="4.781" transform="rotate(30 23.477 12.594)" />
+            </g>
+        </svg>
+    `;
+    contenedorHojas.appendChild(hoja);
+
+    hoja.addEventListener("animationend", function() {
+        hoja.remove();
+        caerHojas();
+    }
+    );
+}
 </script>

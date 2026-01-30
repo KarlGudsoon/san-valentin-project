@@ -1,1 +1,68 @@
 @import "tailwindcss";
+
+@font-face {
+    font-family: Lexend;
+    src: url("/public/fonts/Lexend/Lexend-VariableFont_wght.woff2") format("woff2"),
+         url("/public/fonts/Lexend/Lexend-VariableFont_wght.ttf") format("woff");
+}
+
+@keyframes background-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+main {
+  background: transparent;
+  background-size: 200% 200%;
+  animation: background-gradient 8s ease infinite alternate;
+}
+
+body {
+    background-color: hsl(289, 61%, 18%);
+    background-image: 
+        radial-gradient(at 47% 33%, hsl(339, 66%, 61%) 0, transparent 59%), 
+        radial-gradient(at 50% 65%, hsl(289, 49%, 25%) 0, transparent 30%);
+}
+
+
+
+.corazones {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9;
+  overflow: hidden;
+  opacity: 1;
+  transition: 0.2s ease;
+}
+
+.corazon {
+  position: absolute;
+  top: -50px;
+  width: 20px;
+  height: 20px;
+  opacity: 1; 
+  pointer-events: none;
+  animation-name: caer;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  z-index: 1;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+  translate: 0 0 10px;
+}
+
+@keyframes caer {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
