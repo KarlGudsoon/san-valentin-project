@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>San Valentín</title>
+</head>
+<body>
+    <main id="main" class="flex flex-col h-dvh bg-red-300 justify-center items-center overflow-hidden">
+        <div class="flex flex-col justify-center items-center">
+            <span class="text-red-800 font-bold">Hola amor,</span>
+            <h1 class="text-3xl mt-2 font-bold text-red-50">¿Quieres ser mi Valentín?</h1>
+            <img class="size-64 drop-shadow-amber-100" src="/public/assets/img/valentin.png" alt="">
+        </div>
+        <div>
+            <button id="btn-si" type="button" class="text-white hover:cursor-pointer bg-green-600 box-border border border-transparent hover:bg-green-700 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none active:scale-95">Sí</button>
+            <button id="btn-no" type="button" class="text-white hover:cursor-pointer bg-red-600 box-border border border-transparent hover:bg-red-700 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none active:scale-95">No</button>
+        </div>
+    </main>
+    
+</body>
+</html>
+
+<script>
+    const no = document.getElementById("btn-no");
+    const si = document.getElementById("btn-si");
+
+    no.addEventListener("click", () => {
+        si.style.width = (parseInt(si.style.width) || 250) * 2 + "px";
+        si.style.height = (parseInt(si.style.height) || 250) * 2 + "px";
+    });
+
+    si.addEventListener("click", () => {
+        document.getElementById("main").innerHTML = `
+            <div class="flex flex-col justify-center items-center">
+                <span class="text-red-800 font-bold">¡Gracias por ser mi Valentín!</span>
+                <h1 class="text-3xl mt-2 font-bold text-red-50">Te amo mucho ❤️</h1>
+                <img class="w-3xs drop-shadow-amber-100" src="/public/assets/img/dijoquesi.png" alt="">
+            </div>
+        `;
+    });
+</script>
